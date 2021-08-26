@@ -71,6 +71,10 @@ public class Task {
         return getRepeatInterval() != 0;
     }
 
+    /*
+     *Method that returns the next start time of the task execution after the current time.
+     *If after the specified time the task is not executed anymore, the method must return -1.
+     */
     public int nextTimeAfter(int current){
         return isRepeated()
                 ?current<getStartTime()
