@@ -47,12 +47,10 @@ public class Task {
     }
 
     public void setTime(int time){
-        if (isRepeated()){
-            this.start=time;
-            this.end=time;
-        }
-        else
-            this.time=time;
+        this.time=time;
+        this.interval=0;
+        this.start=0;
+        this.end=0;
     }
 
     //Methods for reading and changing execution time for repetitive tasks
@@ -79,14 +77,10 @@ public class Task {
     //If the task is a non-repetitive one, it should become repetitive.
     public void setTime(int start, int end, int interval){
         if(isRepeated()) {
-            this.start = start;
-            this.end = end;
-            this.interval = interval;
-        }
-        else{
-            this.time=start;
-            this.time=end;
+            this.start=start;
+            this.end=end;
             this.interval=interval;
+            this.time=0;
         }
     }
 
@@ -100,16 +94,22 @@ public class Task {
      */
     public int nextTimeAfter(int current){
         if (isRepeated()){
-            if (current>getStartTime() && current<getEndTime())
-                return (current/getRepeatInterval())*getRepeatInterval()+getStartTime();
-            else if (current<getStartTime())
-                return getStartTime();
+            if (current>start && current<end)
+                if((current-interval)/interval==0)
+                    //Then is (current-interval)/interval=1
+                    return 1*interval+start;
+                else
+                    return ((current-start)/interval)*interval+start;
+            else if (current<=start)
+                return start;
+            else if(current==end)
+                return end;
             else
                 return -1;
         }
         else{
-            if(current<getTime())
-                return getTime();
+            if(current<=time)
+                return time;
             else
                 return -1;
         }
