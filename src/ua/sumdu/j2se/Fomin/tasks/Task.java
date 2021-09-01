@@ -69,10 +69,7 @@ public class Task {
     }
 
     public int getRepeatInterval(){
-        if(isRepeated())
-            return interval;
-        else
-            return 0;
+        return interval;
     }
     //If the task is a non-repetitive one, it should become repetitive.
     public void setTime(int start, int end, int interval){
@@ -93,20 +90,30 @@ public class Task {
      *If after the specified time the task is not executed anymore, the method must return -1.
      */
     public int nextTimeAfter(int current){
+        //For repetitive tasks
         if (isRepeated()){
-            if (current>start && current<end)
-                if((current-interval)/interval==0)
+            if (current>start && current<end){
+                if (current>(end-start)/interval*interval+start)
+                    return -1;
+                else if((current-start)/interval==0)
                     //Then is (current-interval)/interval=1
                     return 1*interval+start;
+                //If current is between first and second intervals;
+                else if(current>((current-start)/interval*interval+start) && (current<((current-start)/interval*interval+start+interval)) && current<=((end/ interval) * interval+start)){
+                    return ((current-start)/interval)*interval+start+interval;
+                }
+                //If current > when the last part will be end;
+                else if (current > (end/ interval) * interval+start)
+                    return -1;
                 else
                     return ((current-start)/interval)*interval+start;
+            }
             else if (current<=start)
                 return start;
-            else if(current==end)
-                return end;
             else
                 return -1;
         }
+        //For non-repetitive tasks
         else{
             if(current<=time)
                 return time;
@@ -115,8 +122,20 @@ public class Task {
         }
     }
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        Task task = new Task("task",100,150,24);
+
+        System.out.println("current: " + 90 + ", next: " + task.nextTimeAfter(90));
+        System.out.println("current: " + 100 + ", next: " + task.nextTimeAfter(100));
+        System.out.println("current: " + 110 + ", next: " + task.nextTimeAfter(110));
+        System.out.println("current: " + 120 + ", next: " + task.nextTimeAfter(120));
+        System.out.println("current: " + 124 + ", next: " + task.nextTimeAfter(124));
+        System.out.println("current: " + 130 + ", next: " + task.nextTimeAfter(130));
+        System.out.println("current: " + 140 + ", next: " + task.nextTimeAfter(140));
+        System.out.println("current: " + 148 + ", next: " + task.nextTimeAfter(148));
+        System.out.println("current: " + 149 + ", next: " + task.nextTimeAfter(149));
+        System.out.println("current: " + 150 + ", next: " + task.nextTimeAfter(150));
     }
 }
 
