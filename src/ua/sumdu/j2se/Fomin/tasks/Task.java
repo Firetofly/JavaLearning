@@ -42,8 +42,7 @@ public class Task {
 
     //Methods for reading and changing execution time for non-repetitive tasks
     public int getTime(){
-        if (isRepeated()) return start;
-        else return time;
+        return isRepeated()?start:time;
     }
 
     public void setTime(int time){
@@ -55,17 +54,12 @@ public class Task {
 
     //Methods for reading and changing execution time for repetitive tasks
     public int getStartTime(){
-        if (isRepeated())
-            return start;
-        else
-            return time;
+        return isRepeated()?start:time;
     }
 
     public int getEndTime(){
-        if(isRepeated())
-            return end;
-        else
-            return time;
+        return isRepeated()?end:time;
+
     }
 
     public int getRepeatInterval(){
