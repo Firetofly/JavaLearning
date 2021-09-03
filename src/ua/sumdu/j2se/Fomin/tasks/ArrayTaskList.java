@@ -2,6 +2,7 @@ package ua.sumdu.j2se.Fomin.tasks;
 
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class ArrayTaskList {
     private Task[] tasks;
@@ -67,20 +68,19 @@ public class ArrayTaskList {
 
     public ArrayTaskList inner(int from, int to){
         ArrayTaskList taskList = new ArrayTaskList();
-        taskList.setTasks(Arrays.stream(tasks).filter(task -> task.getStartTime()>0).toArray(Task[]::new));
+        taskList.setTasks(Arrays.stream(tasks).filter(Objects:: nonNull).filter(task -> (task.getStartTime()>= from && task.getEndTime() <= to) || (task.getTime() >= from && task.getTime() <= to)).
+                toArray(Task[]::new));
         return taskList;
     }
-//task -> (task.getStartTime()>= from && task.getEndTime() <= to) || (task.getTime() >= from && task.getTime() <= to)
+
+    //
     public static void main(String[] args) {
         ArrayTaskList tasksList= new ArrayTaskList();
-        Task task = new Task("task",100,150,24);
-        Task task1 = new Task("task1",105,130,22);
+        Task task1= new Task("task1",100,150,24);
+        Task task2 = new Task("task2",105,130,22);
         tasksList.add(task1);
-        tasksList.add(task);
-        System.out.println();
-       System.out.println(tasksList.inner(90,160));
+        tasksList.add(task2);
+        //System.out.println(task1.getStartTime());
+        System.out.println(tasksList.inner(90,160));
     }
-
-
-
 }
