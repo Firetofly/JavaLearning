@@ -73,14 +73,4 @@ public class ArrayTaskList {
         return taskList;
     }
 
-    //
-    public static void main(String[] args) {
-        ArrayTaskList tasksList= new ArrayTaskList();
-        Task task1= new Task("task1",100,150,24);
-        Task task2 = new Task("task2",105,130,22);
-        tasksList.add(task1);
-        tasksList.add(task2);
-        //System.out.println(task1.getStartTime());
-        System.out.println(tasksList.inner(90,160));
-    }
 }
