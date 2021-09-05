@@ -4,6 +4,10 @@ import java.util.LinkedList;
 
 public class LinkedTaskList {
 
+    transient Node first;
+    transient Node last;
+    private int size;
+
     private static class Node{
         Task item;
         Node next;
@@ -15,10 +19,6 @@ public class LinkedTaskList {
             this.prev=prev;
         }
     }
-
-    transient Node first;
-    transient Node last;
-    private int size;
 
     public void add(Task task){
         addLast(task);
@@ -84,13 +84,26 @@ public class LinkedTaskList {
         size--;
         return element;
     }
-    public Task get(int index){
+    public Task get(int index) throws IndexOutOfBoundsException{
         if(index>=0 && index<=size){
             return node(index).item;
         }
         else
             throw new IndexOutOfBoundsException("Index out of range.");
         }
+    //set with index
+    public Task set(Task task, int index){
+        if(index>=0 && index<size){
+            Node x = node(index);
+            Task oldVal = x.item;
+            x.item= task;
+            return oldVal;
+        }
+        else
+            throw new IndexOutOfBoundsException("Index out of range.");
+
+
+    }
 
     Node node(int index) {
         if(index<(size>>1)){
@@ -108,6 +121,12 @@ public class LinkedTaskList {
             return x;
         }
     }
+
+    /*public LinkedTaskList incoming(int from, int to){
+        LinkedTaskList linkedTaskList = new LinkedTaskList();
+        linkedTaskList.
+
+    }*/
 }
 
 

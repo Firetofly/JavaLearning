@@ -2,10 +2,14 @@ package ua.sumdu.j2se.Fomin.tasks;
 
 public class Main {
     public static void main(String[] args) {
-        //Test for task 1
-        /*Task task = new Task("task",100,150,24);
-
-        System.out.println("current: " + 90 + ", next: " + task.nextTimeAfter(90));
+        //Test for task 1/*
+       try {
+           Task task = new Task("task",100,-1,24);
+       }
+       catch (IllegalArgumentException e){
+           System.out.println(e.getMessage());
+       }
+       /*System.out.println("current: " + 90 + ", next: " + task.nextTimeAfter(90));
         System.out.println("current: " + 100 + ", next: " + task.nextTimeAfter(100));
         System.out.println("current: " + 110 + ", next: " + task.nextTimeAfter(110));
         System.out.println("current: " + 120 + ", next: " + task.nextTimeAfter(120));
@@ -22,10 +26,16 @@ public class Main {
         Task task2 = new Task("task2",105,130,22);
         tasksList.add(task1);
         tasksList.add(task2);
-        System.out.println(tasksList.getTask(0));
+        try {
+            System.out.println(tasksList.getTask(0));
+        }
+        catch (IndexOutOfBoundsException o){
+            System.out.println("Exception message: "+o.getMessage());
+            System.out.println("Cause: "+o.getCause());
+        }
         tasksList.remove(task1);
         tasksList.remove(task2);
         System.out.println(tasksList.size());
-        System.out.println(tasksList.inner(90,160));
+        System.out.println(tasksList.incoming(90,160));
     }
 }
