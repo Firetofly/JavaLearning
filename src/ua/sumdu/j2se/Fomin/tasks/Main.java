@@ -1,5 +1,7 @@
 package ua.sumdu.j2se.Fomin.tasks;
 
+import java.util.LinkedList;
+
 public class Main {
     public static void main(String[] args) {
         //Test for task 1
@@ -45,5 +47,8 @@ public class Main {
         tasksList.remove(task2);
         System.out.println(tasksList.size());
         System.out.println(tasksList.incoming(90,160));
+
+        LinkedTaskList li= (LinkedTaskList) TaskListFactory.createTaskLIst(ListTypes.LINKED);
+        System.out.println(li);
     }
 }

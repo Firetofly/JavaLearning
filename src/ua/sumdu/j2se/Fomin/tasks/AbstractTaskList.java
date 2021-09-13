@@ -41,4 +41,5 @@ public abstract class AbstractTaskList {
     protected abstract void add(Task task);
 
     public abstract Task getTask(int index);
+
 }
