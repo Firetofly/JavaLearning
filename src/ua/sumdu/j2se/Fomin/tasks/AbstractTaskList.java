@@ -23,10 +23,10 @@ public abstract class AbstractTaskList {
         AbstractTaskList returnedTaskList = null;
 
         if(this instanceof ArrayTaskList){
-            returnedTaskList=new LinkedTaskList();
+            returnedTaskList=new ArrayTaskList();
         }
         else if(this instanceof LinkedTaskList){
-            returnedTaskList=new ArrayTaskList();
+            returnedTaskList=new LinkedTaskList();
         }
         for (int i = 0; i < size; i++) {
             if (((getTask(i).getStartTime() >= from && getTask(i).getEndTime() <= to) || (getTask(i).getTime() >= from && getTask(i).getTime() <= to)) && getTask(i)!=null)
