@@ -1,6 +1,8 @@
 package ua.sumdu.j2se.Fomin.tasks;
 
-public class Task {
+import java.util.Objects;
+
+public class Task implements Cloneable {
     private String title;
     private int time;
     private int start;
@@ -118,5 +120,41 @@ public class Task {
         } else
             return -1;
     }
+
+    @Override
+    public boolean equals(Object o) throws IllegalArgumentException {
+        if (this == o) return true;
+        else if (getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        if (!(title.equals(task.title)) || interval != task.interval || active != task.active) return false;
+        else if (time != task.time || start != task.start || end != task.end) return false;
+        else return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31*(this.title.hashCode()+this.time+this.start+this.end
+                +this.interval+(this.isActive()?1:0)+(this.isRepeated()?1:0));
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        if (this.isRepeated()) {
+            return new StringBuilder("This is a repeatable task with parameters: ").append("\nTitle: ").append(title)
+                    .append("\nStart time: ").append(start).append("\nEnd time: ").append(end).append("\nInterval: ")
+                    .append(interval).append("\nActive: ").append(isActive()).append("\n").toString();
+        } else
+            return new StringBuilder("This is a non-repeatable task with parameters: ").append("\nTitle: ")
+                    .append(title).append("\nTime: ").append(time).append("\nActive: ").append(isActive())
+                    .append("\n").toString();
+    }
+
+    @Override
+    public Task clone() throws CloneNotSupportedException {
+        return (Task) super.clone();
+    }
 }
+
 

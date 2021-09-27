@@ -20,38 +20,46 @@ public class LinkedTaskList extends AbstractTaskList {
     }
 
     @Override
-    public void add(Task task) {
-        Node l = last;
-        Node newNode = new Node(task, l, null);
-        last = newNode;
-        if (l == null)
-            first = newNode;
-        else
-            l.next = newNode;
-        increaseSize();
+    public void add(Task task) throws IllegalArgumentException {
+        if (task != null) {
+            Node l = last;
+            Node newNode = new Node(task, l, null);
+            last = newNode;
+            if (l == null)
+                first = newNode;
+            else
+                l.next = newNode;
+            increaseSize();
+        } else {
+            throw new IllegalArgumentException("Parameters of this method should not be NULL");
+        }
     }
 
     @Override
     public boolean remove(Task task) {
-        if (task == null) {
-            for (Node x = first; x != null; x = x.next) {
-                if (x.item == null) {
-                    unlink(x);
-                    return true;
+        if (task != null) {
+            if (task == null) {
+                for (Node x = first; x != null; x = x.next) {
+                    if (x.item == null) {
+                        unlink(x);
+                        return true;
+                    }
+                }
+            } else {
+                for (Node x = first; x != null; x = x.next) {
+                    if (task.equals(x.item)) {
+                        unlink(x);
+                        return true;
+                    }
                 }
             }
+            return false;
         } else {
-            for (Node x = first; x != null; x = x.next) {
-                if (task.equals(x.item)) {
-                    unlink(x);
-                    return true;
-                }
-            }
+            throw new IllegalArgumentException("Parameters of this method should not be null");
         }
-        return false;
     }
 
-    public Task unlink(Node x) {
+    public Task unlink(Node x) throws IllegalArgumentException {
         if (x != null) {
             //assert x != null
             Task element = x.item;
@@ -84,8 +92,26 @@ public class LinkedTaskList extends AbstractTaskList {
             throw new IndexOutOfBoundsException("Index out of range.");
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = false;
+        if (this.getClass() != obj.getClass()) return false;
+        LinkedTaskList taskList = (LinkedTaskList) obj;
+        if (this.size() != taskList.size()) return false;
+        for (int i = 0; i < this.size(); i++) {
+            if (this.getTask(i).hashCode() != taskList.getTask(i).hashCode()) {
+                return false;
+            } else {
+                if (!(this.getTask(i).equals(taskList.getTask(i)))) {
+                    return false;
+                } else result = true;
+            }
+        }
+        return result;
+    }
+
     //set with index
-    public Task set(Task task, int index) {
+    public Task set(Task task, int index) throws IndexOutOfBoundsException {
         if (index >= 0 && index < size()) {
             Node x = node(index);
             Task oldVal = x.item;
@@ -95,7 +121,7 @@ public class LinkedTaskList extends AbstractTaskList {
             throw new IndexOutOfBoundsException("Index out of range.");
     }
 
-    Node node(int index) {
+    Node node(int index) throws IndexOutOfBoundsException {
         if (index >= 0 && index <= size()) {
             if (index < (size() >> 1)) {
                 Node x = first;
@@ -111,6 +137,14 @@ public class LinkedTaskList extends AbstractTaskList {
                 return x;
             }
         } else throw new IndexOutOfBoundsException("Index out of range.");
+    }
+
+    public LinkedTaskList clone() throws CloneNotSupportedException {
+        LinkedTaskList result = null;
+        for (int i = 0; i < this.size(); i++) {
+            result.add(this.getTask(i).clone());
+        }
+        return result;
     }
 }
 

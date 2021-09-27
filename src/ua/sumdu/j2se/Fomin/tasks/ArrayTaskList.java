@@ -15,11 +15,11 @@ public class ArrayTaskList extends AbstractTaskList {
         tasks = new Task[capacity];
     }
 
-
     public void setTasks(Task[] tasks) {
         this.tasks = tasks;
     }
 
+    @Override
     public void add(Task task) throws IllegalArgumentException {
         if (task != null) {
             if (index == tasks.length)
@@ -72,5 +72,34 @@ public class ArrayTaskList extends AbstractTaskList {
         } else
             throw new IndexOutOfBoundsException("Index out of range.");
 
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = false;
+
+        if (this.getClass() != obj.getClass()) return false;
+        ArrayTaskList taskList = (ArrayTaskList) obj;
+        if (this.size() != taskList.size()) return false;
+        for (int i = 0; i < this.size(); i++) {
+            if (this.getTask(i).hashCode() != taskList.getTask(i).hashCode()) {
+                return false;
+            }
+            else {
+                if (!(this.getTask(i).equals(taskList.getTask(i)))) {
+                    return false;
+                }
+                else result = true;
+            }
+        }
+        return result;
+    }
+
+    public ArrayTaskList clone() throws CloneNotSupportedException {
+        ArrayTaskList result = null;
+        for (int i = 0; i < this.size(); i++) {
+            result.add(this.getTask(i).clone());
+        }
+        return result;
     }
 }
