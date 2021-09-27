@@ -92,5 +92,7 @@ public abstract class AbstractTaskList implements Iterable<Task>, Cloneable {
         }
         return result.toString();
     }
-
+    public AbstractTaskList clone() throws CloneNotSupportedException{
+        return (AbstractTaskList) super.clone();
+    }
 }

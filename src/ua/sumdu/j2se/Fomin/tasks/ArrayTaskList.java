@@ -94,12 +94,4 @@ public class ArrayTaskList extends AbstractTaskList {
         }
         return result;
     }
-
-    public ArrayTaskList clone() throws CloneNotSupportedException {
-        ArrayTaskList result = null;
-        for (int i = 0; i < this.size(); i++) {
-            result.add(this.getTask(i).clone());
-        }
-        return result;
-    }
 }

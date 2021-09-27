@@ -22,8 +22,8 @@ public class Main {
 
 //        //Test for task 2
         //ArrayTaskList tasksList= new ArrayTaskList();
-        Task task1 = new Task("task1", 100, 150, 24);
-        Task task2 = new Task("task2", 105, 130, 22);
+        //Task task1 = new Task("task1", 100, 150, 24);
+        //Task task2 = new Task("task2", 105, 130, 22);
         /*try {
             tasksList.add(task1);
         } catch (IllegalArgumentException e) {
@@ -112,9 +112,11 @@ public class Main {
         testclone0.add(task0);
         testclone0.add(task3);
         testclone0.add(task4);
-        testclone1=  testclone0.clone();
-
-
-
+        testclone1=testclone0.clone();
+        System.out.println(testclone0);
+        System.out.println("---------");
+        System.out.println("Cloned task:");
+        System.out.println("---------");
+        System.out.println(testclone1);
     }
 }

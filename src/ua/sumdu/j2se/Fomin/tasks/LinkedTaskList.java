@@ -138,14 +138,6 @@ public class LinkedTaskList extends AbstractTaskList {
             }
         } else throw new IndexOutOfBoundsException("Index out of range.");
     }
-
-    public LinkedTaskList clone() throws CloneNotSupportedException {
-        LinkedTaskList result = null;
-        for (int i = 0; i < this.size(); i++) {
-            result.add(this.getTask(i).clone());
-        }
-        return result;
-    }
 }
 
 
