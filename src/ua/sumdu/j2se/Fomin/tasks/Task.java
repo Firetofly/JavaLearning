@@ -1,37 +1,40 @@
 package ua.sumdu.j2se.Fomin.tasks;
 
-import java.util.Objects;
+import java.time.Period;
+
+import java.time.LocalDateTime;
+
 
 public class Task implements Cloneable {
     private String title;
-    private int time;
-    private int start;
-    private int end;
-    private int interval;
+    private LocalDateTime time;
+    private LocalDateTime start;
+    private LocalDateTime end;
+    private Period interval;
     private boolean active;
 
     //Constructor constructs an inactive task to run at a specified time without repeating with a given name.
-    public Task(String title, int time) throws IllegalArgumentException {
-        if (time >= 0) {
+    public Task(String title, LocalDateTime time) throws NullPointerException {
+        if (time != null) {
             this.title = title;
             this.time = time;
         } else
-            throw new IllegalArgumentException("Time should not be negative.");
+            throw new NullPointerException("Parameter of  this method was  set incorrect");
     }
 
     /*
      * Constructor constructs an inactive task to run within the specified time range
      * (including the start and the end time) with the set repetition interval and with a given name.
      */
-    public Task(String title, int start, int end, int interval) throws IllegalArgumentException {
-        if (start >= 0 && end >= 0 && interval >= 0) {
+    public Task(String title, LocalDateTime start, LocalDateTime end, Period interval) throws NullPointerException {
+        if (start == null || end == null || interval == null)
+            throw new NullPointerException("Parameters 'Start', 'End' and 'Interval' should not be a null!");
+        else {
             this.title = title;
             this.start = start;
             this.end = end;
             this.interval = interval;
-        } else
-            throw new IllegalArgumentException("StartTime,EndTime and Interval should not be negative.");
-
+        }
     }
 
     public String getTitle() {
@@ -51,75 +54,128 @@ public class Task implements Cloneable {
     }
 
     //Methods for reading and changing execution time for non-repetitive tasks
-    public int getTime() {
+    public LocalDateTime getTime() {
         return isRepeated() ? start : time;
     }
 
-    public void setTime(int time) throws IllegalArgumentException {
-        if (time >= 0) {
+    public void setTime(LocalDateTime time) throws NullPointerException {
+        if (time != null) {
             this.time = time;
-            this.interval = 0;
-            this.start = 0;
-            this.end = 0;
+            this.interval = null;
+            this.start = null;
+            this.end = null;
         } else
-            throw new IllegalArgumentException("Time should not be negative.");
+            throw new NullPointerException("Incorrect parameter was set.");
     }
 
     //Methods for reading and changing execution time for repetitive tasks
-    public int getStartTime() {
+    public LocalDateTime getStartTime() {
         return isRepeated() ? start : time;
     }
 
-    public int getEndTime() {
+    public LocalDateTime getEndTime() {
         return isRepeated() ? end : time;
     }
 
-    public int getRepeatInterval() {
+    public Period getRepeatInterval() {
         return interval;
     }
 
     //If the task is a non-repetitive one, it should become repetitive.
-    public void setTime(int start, int end, int interval) throws IllegalArgumentException {
-        if (start >= 0 && end >= 0 && interval >= 0) {
+    public void setTime(LocalDateTime start, LocalDateTime end, Period interval) throws NullPointerException {
+        if (start == null || end == null || interval == null)
+            throw new NullPointerException("Parameters 'Start' and 'End' should not be a null!");
+        else {
             this.start = start;
             this.end = end;
             this.interval = interval;
-            this.time = 0;
-        } else
-            throw new IllegalArgumentException("StartTime,EndTime and Interval should not be negative.");
+            this.time = null;
+        }
     }
 
     public boolean isRepeated() {
-        return getRepeatInterval() != 0;
+        return getRepeatInterval() != null;
     }
 
     /*
      *Method that returns the next start time of the task execution after the current time.
      *If after the specified time the task is not executed anymore, the method must return -1.
      */
-    public int nextTimeAfter(int current) throws IllegalArgumentException {
-        if (isActive()) {
-            if (current >= 0) {
-                //For repetitive tasks
-                if (isRepeated()) {
-                    if (current > start && (current <= (end - start) / interval * interval + start)) {
-                        if ((current - start) / interval == 0)
-                            //Then is (current-interval)/interval=1
-                            return start + interval;
-                            //If current is between first and second intervals;
-                        else if (current > ((current - start) / interval * interval + start) && (current < ((current - start) / interval * interval + start + interval)))
-                            return ((current - start) / interval) * interval + start + interval;
-                        else
-                            return ((current - start) / interval) * interval + start;
-                    } else return current <= start ? start : -1;
-                }
-                //For non-repetitive tasks
-                else return current <= time ? time : -1;
-            } else
-                throw new IllegalArgumentException("Current should not be negative.");
-        } else
-            return -1;
+
+    public LocalDateTime nextTimeAfter(LocalDateTime current) {
+
+        //For non repeatable task:
+        if (!isRepeated()) {
+            if (time.isBefore(current) || time.isEqual(current)) {
+                return null;
+            } else {
+                return time;
+            }
+        }
+        //For  repeatable task:
+        if (current.isAfter(end) || current.isEqual(end)) {
+            return null;
+        }
+        if (current.isBefore(start)) {
+            return start;
+        }
+
+        LocalDateTime count = start;
+
+        LocalDateTime lastIteration = start;
+
+        while (lastIteration.isBefore(end) || lastIteration.isEqual(end)) {
+            lastIteration = lastIteration.plus(getRepeatInterval());
+        }
+        lastIteration = lastIteration.minus(interval);
+        //Calculation last iteration with current
+        while (count.isBefore(current) || count.isEqual(current)) {
+            count = count.plus(getRepeatInterval());
+        }
+        if (current.isEqual(lastIteration) || current.isAfter(lastIteration) || count.isAfter(lastIteration)) {
+            return null;
+        }
+        return count;
     }
+    /*public LocalDateTime nextTimeAfter(LocalDateTime current) throws NullPointerException {
+        if (isActive()) {
+
+            if (current != null) {
+                //for non repeatable task:
+                if (!isRepeated()) {
+                    if (time.isBefore(current) || time.isEqual(current)) {
+                        return null;
+                    } else {
+                        return time;
+                    }
+                }
+                //for  repeatable task:
+                if (current.isAfter(end) || current.isEqual(end)) {
+                    return null;
+                }
+                if (current.isBefore(start)) {
+                    return start;
+                }
+                LocalDateTime count = start;
+                LocalDateTime lastIteration = start;
+                while (lastIteration.isBefore(end) || lastIteration.isEqual(end)) {
+                    lastIteration = lastIteration.plus(getRepeatInterval());
+                }
+                lastIteration = lastIteration.minus(interval);
+                //calculation last Iteration with current
+                while (count.isBefore(current) || count.isEqual(current)) {
+                    count = count.plus(getRepeatInterval());
+                }
+                if (current.isEqual(lastIteration) || current.isAfter(lastIteration) || count.isAfter(lastIteration)) {
+                    return null;
+                }
+                return count;
+            } else
+                throw new NullPointerException("'Current' should not be a null.");
+        } else
+            return null;
+    }*/
+
 
     @Override
     public boolean equals(Object o) throws IllegalArgumentException {
@@ -134,9 +190,14 @@ public class Task implements Cloneable {
     @Override
     public int hashCode() {
         int result = 17;
-        result = 31*(this.title.hashCode()+this.time+this.start+this.end
-                +this.interval+(this.isActive()?1:0)+(this.isRepeated()?1:0));
+        result = 31 * result + (time != null ? time.hashCode() : 0);
+        result = 31 * result + (start != null ? start.hashCode() : 0);
+        result = 31 * result + (end != null ? end.hashCode() : 0);
+        result = 31 * result + (interval != null ? interval.hashCode() : 0);
+        result = 31 * result + (isActive() ? 1 : 0);
+        result = 31 * result + (isRepeated() ? 1 : 0);
         return result;
+
     }
 
     @Override
@@ -155,6 +216,26 @@ public class Task implements Cloneable {
     public Task clone() throws CloneNotSupportedException {
         return (Task) super.clone();
     }
+
 }
+
+    /*{
+                //For repetitive tasks
+                if (isRepeated()) {
+                    if (current.(start) && (current <= (end - start) / interval * interval + start)) {
+                        if ((current) - start) / interval == 0)
+                            //Then is (current-interval)/interval=1
+                            return start + interval;
+                            //If current is between first and second intervals;
+                        else if (current > ((current - start) / interval * interval + start) && (current < ((current - start) / interval * interval + start + interval)))
+                            return ((current - start) / interval) * interval + start + interval;
+                        else
+                            return ((current - start) / interval) * interval + start;
+                    } else return current <= start ? start : null;
+                }
+                //For non-repetitive tasks
+                else return current <= time ? time : null;
+            }*/
+
 
 

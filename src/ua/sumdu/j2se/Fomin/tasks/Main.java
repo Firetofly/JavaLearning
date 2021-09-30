@@ -1,7 +1,15 @@
 package ua.sumdu.j2se.Fomin.tasks;
 
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.Period;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
 public class Main {
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) throws CloneNotSupportedException, InterruptedException {
         //Test for task 1
       /*  try {
             Task task = new Task("task1", 100, 150, 24);
@@ -104,9 +112,12 @@ public class Main {
         System.out.println("------------");
         Task test1 = test.clone();
         System.out.println(test1.toString());
-*/      Task task0 = new Task("Task0",123);
-        Task task3 = new Task("Task3",50);
-        Task task4 = new Task("Task4",24,100,10);
+*/
+        /*
+        Task task0 = new Task("Task0", LocalDateTime.of(2021,Month.SEPTEMBER,3,10,00));
+        Task task3 = new Task("Task3",LocalDateTime.of(2021,Month.SEPTEMBER,30,21,43));
+        Task task4 = new Task("Task4",LocalDateTime.of(2021, Month.AUGUST, 3, 14, 15)
+                , LocalDateTime.of(2021, Month.AUGUST, 29, 14, 15), Period.ofDays(5));
         AbstractTaskList testclone0 = TaskListFactory.createTaskLIst(ListTypes.ARRAY);
         AbstractTaskList testclone1 = TaskListFactory.createTaskLIst(ListTypes.ARRAY);
         testclone0.add(task0);
@@ -118,5 +129,46 @@ public class Main {
         System.out.println("Cloned task:");
         System.out.println("---------");
         System.out.println(testclone1);
+    }*/
+
+        //Test's for nonRepTasks:
+/*
+        AbstractTaskList taskList = TaskListFactory.createTaskLIst(ListTypes.LINKED);
+
+        Task nonRep1 = new Task("nonRep1", LocalDateTime.now());
+        Task nonRep2 = new Task("nonRep2", LocalDateTime.now());
+        Thread.sleep(2000);
+        Task nonRep3 = new Task("nonRep3", LocalDateTime.now());
+        Task nonRep4 = new Task("nonRep4", LocalDateTime.now());
+        taskList.add(nonRep1);
+        taskList.add(nonRep2);
+        taskList.add(nonRep3);
+        taskList.add(nonRep4);
+        Thread.sleep(2000);
+        TreeMap<LocalDateTime, Set<Task>> sortedMap = (TreeMap) Tasks.calendar(taskList, LocalDateTime.now().minusDays(1), LocalDateTime.now())*/
+        ;
+
+        //Test's for RepTasks at Work7:
+
+        AbstractTaskList taskList = TaskListFactory.createTaskLIst(ListTypes.ARRAY);
+
+        Task repetableTask1 = new Task("testtasik1!", LocalDateTime.of(2021, Month.AUGUST, 3,
+                14, 15), LocalDateTime.of(2021, Month.AUGUST, 29, 14, 15),
+                Period.ofDays(5));
+
+        Task repetableTask2 = new Task("testtasik2!", LocalDateTime.of(2021, Month.AUGUST, 3,
+                14, 15), LocalDateTime.of(2021, Month.AUGUST, 29, 14, 15),
+                Period.ofDays(5));
+
+        taskList.add(repetableTask1);
+        taskList.add(repetableTask2);
+
+        TreeMap<LocalDateTime, Set<Task>> sortedMap = (TreeMap) Tasks
+                .calendar(taskList, LocalDateTime.now().minusMonths(3), LocalDateTime.now());
+
+        for (Map.Entry<LocalDateTime, Set<Task>> entry : sortedMap.entrySet()) {
+            System.out.println("\nKEY: " + entry.getKey() + ". \nVALUE: " + entry.getValue());
+        }
+
     }
 }

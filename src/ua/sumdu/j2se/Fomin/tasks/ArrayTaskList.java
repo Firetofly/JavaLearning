@@ -1,7 +1,9 @@
 package ua.sumdu.j2se.Fomin.tasks;
 
 
-public class ArrayTaskList extends AbstractTaskList {
+import java.util.Iterator;
+
+public class ArrayTaskList extends AbstractTaskList implements Iterable {
     private Task[] tasks;
     private int index;
 
@@ -73,24 +75,38 @@ public class ArrayTaskList extends AbstractTaskList {
             throw new IndexOutOfBoundsException("Index out of range.");
 
     }
+    @Override
+    public Iterator<Task> iterator(){
+        return new Iterator<Task>() {
+            int counter=0;
+            @Override
+            public boolean hasNext() {
+                return !(counter==size());
+            }
+
+            @Override
+            public Task next() {
+                return getTask(counter++);
+            }
+
+            @Override
+            public void remove(){
+                ArrayTaskList.this.remove(getTask(counter));
+            }
+        };
+    }
 
     @Override
     public boolean equals(Object obj) {
         boolean result = false;
-
-        if (this.getClass() != obj.getClass()) return false;
+        if (this == obj) return true;
+        if (obj == null || this.getClass() != obj.getClass()) return false;
         ArrayTaskList taskList = (ArrayTaskList) obj;
         if (this.size() != taskList.size()) return false;
         for (int i = 0; i < this.size(); i++) {
-            if (this.getTask(i).hashCode() != taskList.getTask(i).hashCode()) {
+            if (!(this.getTask(i).equals(taskList.getTask(i)))) {
                 return false;
-            }
-            else {
-                if (!(this.getTask(i).equals(taskList.getTask(i)))) {
-                    return false;
-                }
-                else result = true;
-            }
+            } else result = true;
         }
         return result;
     }

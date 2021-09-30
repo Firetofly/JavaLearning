@@ -1,10 +1,11 @@
 package ua.sumdu.j2se.Fomin.tasks;
 
-import java.util.Iterator;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-public abstract class AbstractTaskList implements Iterable<Task>, Cloneable {
+public abstract class AbstractTaskList implements Cloneable,Iterable {
 
     private int size;
 
@@ -30,58 +31,39 @@ public abstract class AbstractTaskList implements Iterable<Task>, Cloneable {
         return size;
     }
 
-   /* public AbstractTaskList incoming(int from, int to) throws IllegalArgumentException {
-        if (from >= 0 && to >= 0) {
-            AbstractTaskList returnedTaskList = null;
+   /* public AbstractTaskList incoming(Date from, Date to) throws IllegalArgumentException, NullPointerException {
+        if (from == null && to == null) throw new NullPointerException("Parameters was set null!");
+        if (to.before(from) || from.before(to) || from.getTime() < 0 || to.getTime() < 0)
+            throw new IllegalArgumentException("Incorrect of method parameters was set!");
 
-            if (this instanceof ArrayTaskList) {
-                returnedTaskList = new ArrayTaskList();
-            } else if (this instanceof LinkedTaskList) {
-                returnedTaskList = new LinkedTaskList();
+        AbstractTaskList returnedTaskList = null;
+
+        if (this instanceof ArrayTaskList) {
+            returnedTaskList = new ArrayTaskList();
+        } else if (this instanceof LinkedTaskList) {
+            returnedTaskList = new LinkedTaskList();
+        }
+        for (int i = 0; i < size; i++) {
+            if (((getTask(i).getStartTime().getTime() >= from.getTime() && getTask(i).getEndTime().getTime() <= to
+                    .getTime()) || (getTask(i).getTime().getTime() >= from.getTime() && getTask(i).getTime()
+                    .getTime() <= to.getTime())) && getTask(i) != null) {
+                assert returnedTaskList != null;
+                returnedTaskList.add(getTask(i));
+
+            } else if (getTask(i).nextTimeAfter(from).getTime() >= from.getTime() && getTask(i).nextTimeAfter(from)
+                    .getTime() <= to.getTime()) {
+                returnedTaskList.add(getTask(i));
             }
-            for (int i = 0; i < size; i++) {
-                if (((getTask(i).getStartTime() >= from && getTask(i).getEndTime() <= to) || (getTask(i).getTime() >= from && getTask(i).getTime() <= to)) && getTask(i) != null) {
-                    assert returnedTaskList != null;
-                    returnedTaskList.add(getTask(i));
-                } else if (getTask(i).nextTimeAfter(from) >= from && getTask(i).nextTimeAfter(from) <= to) {
-                    returnedTaskList.add(getTask(i));
-                }
-            }
-            return returnedTaskList;
-        } else throw new IllegalArgumentException("Parameters of this method should not be negative.");
+        }
+        return returnedTaskList;
     }*/
-
-    @Override
-    public Iterator<Task> iterator() {
-        return new Iterator<Task>() {
-            int current = 0;
-
-            @Override
-            public boolean hasNext() {
-
-                return !(current == size);
-            }
-
-            @Override
-            public Task next() {
-
-                return getTask(current++);
-            }
-
-            @Override
-            public void remove() {
-
-                AbstractTaskList.this.remove(getTask(current));
-            }
-        };
-    }
 
     public int hashCode() {
         int result = 17;
         for (int i = 0; i < this.size(); i++) {
-            result += getTask(i).hashCode();
+            result = 31 * result + getTask(i).hashCode();
         }
-        return 31 * result;
+        return result;
     }
 
     public String toString() {
@@ -112,22 +94,30 @@ public abstract class AbstractTaskList implements Iterable<Task>, Cloneable {
         return streamList;
     }
 
-    final public AbstractTaskList incoming(int from, int to) throws IllegalArgumentException {
-        if (from <= 0 || to <= 0 || to <= from) {
-            throw new IllegalArgumentException("Incorrect arguments was set of this method");
-        }
 
+
+/*    final public AbstractTaskList incoming(LocalDateTime from, LocalDateTime to) throws IllegalArgumentException, NullPointerException {
+        if (from == null && to == null) throw new NullPointerException("Parameters was set null!");
+        if (to.isBefore(from) || from.isBefore(to))
+            throw new IllegalArgumentException("Incorrect of method parameters was set!");
 
         AbstractTaskList result = null;
         if (this instanceof ArrayTaskList) result = new ArrayTaskList();
         if (this instanceof LinkedTaskList) result = new LinkedTaskList();
 
-        assert result != null;
-        this.getStream().filter(Objects::nonNull).filter(task -> (task.getStartTime()>=from &&  task.getEndTime()<=to)||(task
-                .getTime()>=from && task.getTime()<=to) || (task.nextTimeAfter(from)>=from && task
-                .nextTimeAfter(from)<=to)).forEach(result::add);
-        return result;
+        this.getStream().filter(Objects::nonNull).filter(task -> (task.getStartTime().equals(from) || task
+                .getStartTime().isAfter(from) && task.getEndTime().equals(to) || task.getEndTime()
+                .isBefore(to)) || (task.getTime().equals(from) || task.getTime().isAfter(from) && task
+                .getTime().isBefore(to) || task.getTime().equals(to)) &&(task.nextTimeAfter(from).equals(from) || task
+                .nextTimeAfter(from).isAfter(from) && task.nextTimeAfter(from).equals(to) || task
+                .nextTimeAfter(from).isBefore(to))).forEach(result::add);
 
-    }
+        *//*assert result != null;
+        this.getStream().filter(Objects::nonNull).filter(task -> (task.getStartTime() >= from && task
+                .getEndTime() <= to.getTime()) || (task
+                .getTime() >= from.getTime() && task. <= to) || (task.nextTimeAfter(from) >= from && task
+                .nextTimeAfter(from) <= to.getTime())).forEach(result::add);*//*
+        return result;
+    }*/
 }
 

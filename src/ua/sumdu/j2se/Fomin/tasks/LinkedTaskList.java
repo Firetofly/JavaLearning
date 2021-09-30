@@ -1,8 +1,9 @@
 package ua.sumdu.j2se.Fomin.tasks;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
-public class LinkedTaskList extends AbstractTaskList {
+public class LinkedTaskList extends AbstractTaskList implements Iterable {
 
     transient Node first;
     transient Node last;
@@ -95,17 +96,12 @@ public class LinkedTaskList extends AbstractTaskList {
     @Override
     public boolean equals(Object obj) {
         boolean result = false;
-        if (this.getClass() != obj.getClass()) return false;
+        if (this == obj) return true;
+        if (obj == null || this.getClass() != obj.getClass()) return false;
         LinkedTaskList taskList = (LinkedTaskList) obj;
         if (this.size() != taskList.size()) return false;
-        for (int i = 0; i < this.size(); i++) {
-            if (this.getTask(i).hashCode() != taskList.getTask(i).hashCode()) {
-                return false;
-            } else {
-                if (!(this.getTask(i).equals(taskList.getTask(i)))) {
-                    return false;
-                } else result = true;
-            }
+        if (this.first == taskList.first && this.first == taskList.last) {
+            result = true;
         }
         return result;
     }
@@ -138,7 +134,30 @@ public class LinkedTaskList extends AbstractTaskList {
             }
         } else throw new IndexOutOfBoundsException("Index out of range.");
     }
+
+    public Iterator<Task> iterator() {
+        return new Iterator<Task>() {
+            Node counter = first;
+
+            @Override
+            public boolean hasNext() {
+                return counter.next != null;
+            }
+
+            @Override
+            public Task next() {
+                counter = counter.next;
+                return counter.item;
+            }
+            @Override
+            public void remove() {
+                LinkedTaskList.this.remove(counter.item);
+            }
+        };
+    }
 }
+
+
 
 
 
