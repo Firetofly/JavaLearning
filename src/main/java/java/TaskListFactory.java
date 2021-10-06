@@ -1,4 +1,9 @@
-package ua.sumdu.j2se.Fomin.tasks;
+package java;
+
+import java.AbstractTaskList;
+import java.ArrayTaskList;
+import java.LinkedTaskList;
+import java.ListTypes;
 
 public class TaskListFactory {
     public static AbstractTaskList createTaskLIst(ListTypes type) throws IllegalArgumentException {

@@ -1,9 +1,9 @@
-package ua.sumdu.j2se.Fomin.tasks;
+package java;
 
 
 import java.util.Iterator;
 
-public class ArrayTaskList extends AbstractTaskList implements Iterable {
+public class ArrayTaskList extends AbstractTaskList {
     private Task[] tasks;
     private int index;
 

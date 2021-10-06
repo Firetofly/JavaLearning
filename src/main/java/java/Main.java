@@ -1,12 +1,10 @@
-package ua.sumdu.j2se.Fomin.tasks;
+package java;
 
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.Period;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException, InterruptedException {
@@ -153,22 +151,28 @@ public class Main {
         AbstractTaskList taskList = TaskListFactory.createTaskLIst(ListTypes.ARRAY);
 
         Task repetableTask1 = new Task("testtasik1!", LocalDateTime.of(2021, Month.AUGUST, 3,
-                14, 15), LocalDateTime.of(2021, Month.AUGUST, 29, 14, 15),
+                14, 15), LocalDateTime.of(2021, Month.AUGUST, 29, 14, 15,56),
                 Period.ofDays(5));
 
         Task repetableTask2 = new Task("testtasik2!", LocalDateTime.of(2021, Month.AUGUST, 3,
-                14, 15), LocalDateTime.of(2021, Month.AUGUST, 29, 14, 15),
+                14, 15), LocalDateTime.of(2021, Month.AUGUST, 29, 14, 15,56),
                 Period.ofDays(5));
 
         taskList.add(repetableTask1);
         taskList.add(repetableTask2);
 
-        TreeMap<LocalDateTime, Set<Task>> sortedMap = (TreeMap) Tasks
+        DateTimeFormatter formatter = DateTimeFormatter
+                .ofPattern("yyyy.MM.dd HH:mm:ss", Locale.ROOT);
+
+        System.out.println(taskList.getTask(0).getStartTime().format(formatter).toString());
+       // System.out.println(taskList.getTask(0).getRepeatInterval().toString());
+
+/*        TreeMap<LocalDateTime, Set<Task>> sortedMap = (TreeMap) Tasks
                 .calendar(taskList, LocalDateTime.now().minusMonths(3), LocalDateTime.now());
 
         for (Map.Entry<LocalDateTime, Set<Task>> entry : sortedMap.entrySet()) {
             System.out.println("\nKEY: " + entry.getKey() + ". \nVALUE: " + entry.getValue());
-        }
+        }*/
 
     }
 }

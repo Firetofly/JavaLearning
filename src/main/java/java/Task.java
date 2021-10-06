@@ -1,11 +1,12 @@
-package ua.sumdu.j2se.Fomin.tasks;
+package java;
 
+import java.io.Serializable;
 import java.time.Period;
 
 import java.time.LocalDateTime;
 
 
-public class Task implements Cloneable {
+public class Task implements Cloneable, Serializable {
     private String title;
     private LocalDateTime time;
     private LocalDateTime start;

@@ -1,11 +1,9 @@
-package ua.sumdu.j2se.Fomin.tasks;
+package java;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Objects;
+import java.io.Serializable;
 import java.util.stream.Stream;
 
-public abstract class AbstractTaskList implements Cloneable,Iterable {
+public abstract class AbstractTaskList implements Cloneable,Iterable<Task>, Serializable {
 
     private int size;
 

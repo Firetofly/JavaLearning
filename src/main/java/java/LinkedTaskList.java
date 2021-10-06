@@ -1,9 +1,8 @@
-package ua.sumdu.j2se.Fomin.tasks;
+package java;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 
-public class LinkedTaskList extends AbstractTaskList implements Iterable {
+public class LinkedTaskList extends AbstractTaskList {
 
     transient Node first;
     transient Node last;

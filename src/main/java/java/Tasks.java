@@ -1,8 +1,6 @@
-package ua.sumdu.j2se.Fomin.tasks;
+package java;
 
 import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.Period;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;

@@ -1,4 +1,4 @@
-package ua.sumdu.j2se.Fomin.tasks;
+package java;
 
 enum ListTypes {
     ARRAY,
