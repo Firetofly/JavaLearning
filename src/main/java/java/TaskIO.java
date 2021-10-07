@@ -1,5 +1,8 @@
 package java;
 
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -15,10 +18,7 @@ public class TaskIO {
 
         outputStream.writeInt(tasks.size());
 
-        int number = 0;
-
         for (Task t : tasks) {
-            outputStream.writeInt(number);
             outputStream.writeInt(t.getTitle().length());
             outputStream.writeUTF(t.getTitle());
             outputStream.writeInt(t.isActive() ? 1 : 0);
@@ -35,7 +35,6 @@ public class TaskIO {
                 String time = (t.getTime().format(formatter));
                 outputStream.writeUTF(time);
             }
-            number++;
             outputStream.flush();
             outputStream.close();
         }
@@ -47,10 +46,9 @@ public class TaskIO {
                 .ofPattern("yyyy.MM.dd HH:mm:ss", Locale.ROOT);
 
         int taskCounter = inputStream.readInt();
-        Period interval = null;
+        Period interval;
 
         for (int i = 0; i < taskCounter; i++) {
-            int theNumberOfTask = inputStream.readInt();
             int titleLength = inputStream.readInt();
             String title = inputStream.readUTF();
 
@@ -90,68 +88,93 @@ public class TaskIO {
      *IO method writes a task from list to a stream at JSON format
      */
     public static void write(AbstractTaskList tasks, Writer out) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(out);
         DateTimeFormatter formatter = DateTimeFormatter
                 .ofPattern("yyyy.MM.dd HH:mm", Locale.ROOT);
+        JsonWriter writer = new JsonWriter(out);
 
-        bufferedWriter.write(tasks.size() + "\n");
-        int taskNumber = 0;
+        writer.beginObject();
+        writer.beginArray();
+        writer.name("The number of tasks: ").value(tasks.size());
         for (Task t : tasks) {
-            bufferedWriter.write("\n" + taskNumber + "\n");
-            bufferedWriter.write(+t.getTitle().length() + "\n");
-            bufferedWriter.write(t.getTitle() + "\n");
-            bufferedWriter.write(t.isActive() ? "1\n" : "0\n");
-            bufferedWriter.write(t.isRepeated() ? t.getRepeatInterval().getDays() * 86400 + "\n" : null + "\n");
-            if (t.getRepeatInterval() != null) {
-                String start = t.getStartTime().format(formatter);
-                bufferedWriter.write(start + "\n");
-                String end = t.getEndTime().format(formatter);
-                bufferedWriter.write(end + "\n");
+            writer.beginObject();
+            writer.name("The length of name: ").value(t.getTitle().length());
+            writer.name("Name: ").value(t.getTitle());
+            writer.name("Activity: ").value(t.isActive() ? 1 : 0);
+            writer.name("Repetition interval: ").value(t.isRepeated() ? t.getRepeatInterval().getDays() * 86400L : 0);
+            if (t.isRepeated()) {
+                String startTime = (t.getStartTime().format(formatter));
+                writer.name("Start time: ").value(startTime);
+                String endTime = (t.getEndTime().format(formatter));
+                writer.name("End time: ").value(endTime);
             } else {
-                String time = t.getTime().format(formatter);
-                bufferedWriter.write(time);
+                String time = (t.getTime().format(formatter));
+                writer.name("Execution time: ").value(time);
             }
-            taskNumber++;
-            bufferedWriter.flush();
-            bufferedWriter.close();
+            writer.endObject();
         }
+        writer.endArray();
+        writer.endObject();
+
+
+
     }
 
     public static void read(AbstractTaskList tasks, Reader in) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(in);
         DateTimeFormatter formatter = DateTimeFormatter
-                .ofPattern("yyyy.MM.dd HH:mm", Locale.ROOT);
-
-        int taskCounter = Integer.parseInt(bufferedReader.readLine());
-
-        for (int i = 0; i < taskCounter; i++) {
-            String taskNumber = bufferedReader.readLine();
-            String titleLength = bufferedReader.readLine();
-            String title = bufferedReader.readLine();
-            String isActive = bufferedReader.readLine();
-            String intervalReader = bufferedReader.readLine();
-            //set activity in boolean
-            boolean activity = isActive.equals("1");
-            String strInterval = bufferedReader.readLine();
-            //set interval in Period
-            long longInterval=strInterval.equals("null")?0:Long.parseLong(strInterval);
-            Period interval=longInterval>0?Period.ofDays((int) (longInterval / 86400)):null;
-            if(interval != null){
-                String tmpStart = bufferedReader.readLine();
-                LocalDateTime start = LocalDateTime.parse(tmpStart,formatter);
-                String tmpEnd = bufferedReader.readLine();
-                LocalDateTime end = LocalDateTime.parse(tmpEnd, formatter);
-                Task tmpTask = new Task(title, start,end,interval);
+                .ofPattern("yyyy.MM.dd HH:mm:ss", Locale.ROOT);
+        JsonReader reader = new JsonReader(in);
+        int numberOfTasks = 0;
+        int titleLength = 0;
+        String title = null;
+        Long intervalLong;
+        Period interval = null;
+        int activity = 0;
+        String startStr;
+        LocalDateTime start = null;
+        String endStr;
+        LocalDateTime end = null;
+        String timeStr;
+        LocalDateTime time = null;
+        numberOfTasks = reader.nextInt();
+        reader.beginObject();
+        reader.beginArray();
+        while (reader.hasNext()) {
+            reader.beginObject();
+            String name = reader.nextName();
+            if (name.equals("The number of tasks: ")) numberOfTasks = reader.nextInt();
+            if (name.equals("The length of name: ")) titleLength = reader.nextInt();
+            if (name.equals("Name: ")) title = reader.nextString();
+            if (name.equals("Activity: ")) activity = reader.nextInt();
+            if (name.equals("Repetition interval: ")) {
+                intervalLong = reader.nextLong();
+                interval=Period.ofDays((int) (intervalLong / 86400));
+            }
+            if(name.equals("Start time: ")) {
+                startStr=reader.nextString();
+                start=LocalDateTime.parse(startStr, formatter);
+            }
+            if(name.equals("End time: ")){
+                endStr=reader.nextString();
+                end=LocalDateTime.parse(endStr, formatter);
+            }
+            if(name.equals("Execution time: ")){
+                timeStr=reader.nextString();
+                time=LocalDateTime.parse(timeStr, formatter);
+            }
+            if(interval!=null){
+                Task tmpTask = new Task(title,start,end,interval);
+                tmpTask.setActive(activity==1);
                 tasks.add(tmpTask);
             }
             else{
-                String tmpTime= bufferedReader.readLine();
-                LocalDateTime time = LocalDateTime.parse(tmpTime,formatter);
                 Task tmpTask = new Task(title, time);
+                tmpTask.setActive(activity==1);
                 tasks.add(tmpTask);
             }
+            reader.endObject();
         }
-        bufferedReader.close();
+        reader.endArray();
+        reader.endObject();
     }
 
     //Method writes tasks to a file
