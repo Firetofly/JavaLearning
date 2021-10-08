@@ -1,4 +1,4 @@
-package java;
+package ua.eu.sumdu.j2se.Fomin.tasks;
 
 import java.io.Serializable;
 import java.util.stream.Stream;

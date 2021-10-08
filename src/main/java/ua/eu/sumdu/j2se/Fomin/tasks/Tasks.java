@@ -1,4 +1,6 @@
-package java;
+package ua.eu.sumdu.j2se.Fomin.tasks;
+
+import ua.eu.sumdu.j2se.Fomin.tasks.Task;
 
 import java.time.LocalDateTime;
 import java.util.*;

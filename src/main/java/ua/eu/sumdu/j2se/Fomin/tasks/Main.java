@@ -1,13 +1,14 @@
-package java;
+package ua.eu.sumdu.j2se.Fomin.tasks;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 public class Main {
-    public static void main(String[] args) throws CloneNotSupportedException, InterruptedException {
+    public static void main(String[] args) throws CloneNotSupportedException, InterruptedException, IOException {
         //Test for task 1
       /*  try {
             Task task = new Task("task1", 100, 150, 24);
@@ -161,10 +162,10 @@ public class Main {
         taskList.add(repetableTask1);
         taskList.add(repetableTask2);
 
-        DateTimeFormatter formatter = DateTimeFormatter
+        /*DateTimeFormatter formatter = DateTimeFormatter
                 .ofPattern("yyyy.MM.dd HH:mm:ss", Locale.ROOT);
 
-        System.out.println(taskList.getTask(0).getStartTime().format(formatter).toString());
+        System.out.println(taskList.getTask(0).getStartTime().format(formatter).toString());*/
        // System.out.println(taskList.getTask(0).getRepeatInterval().toString());
 
 /*        TreeMap<LocalDateTime, Set<Task>> sortedMap = (TreeMap) Tasks
@@ -173,6 +174,25 @@ public class Main {
         for (Map.Entry<LocalDateTime, Set<Task>> entry : sortedMap.entrySet()) {
             System.out.println("\nKEY: " + entry.getKey() + ". \nVALUE: " + entry.getValue());
         }*/
+        try {
+            File testJsonFile = new File("C:\\testjava\\testJson.txt");
+            File testFile=new File("C:\\testjava\\test.txt");
+            TaskIO.writeBinary(taskList, testFile);
+            TaskIO.writeText(taskList, testJsonFile);
+            //System.out.println(taskList);
 
+            AbstractTaskList input1 = TaskListFactory.createTaskLIst(ListTypes.ARRAY);
+            AbstractTaskList input2 = TaskListFactory.createTaskLIst(ListTypes.ARRAY);
+
+            TaskIO.readBinary(input1, testFile);
+            TaskIO.readText(input2, testJsonFile);
+
+            System.out.println("Input1: \n"+input1);
+            System.out.println("Input2: \n"+input2);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
     }
 }

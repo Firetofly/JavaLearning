@@ -1,4 +1,4 @@
-package java;
+package ua.eu.sumdu.j2se.Fomin.tasks;
 
 import java.util.Iterator;
 

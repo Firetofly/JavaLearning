@@ -1,5 +1,6 @@
-package java;
+package ua.eu.sumdu.j2se.Fomin.tasks;
 
+import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
@@ -14,7 +15,7 @@ public class TaskIO {
     public static void write(AbstractTaskList tasks, OutputStream out) throws IOException {
         DataOutputStream outputStream = new DataOutputStream(out);
         DateTimeFormatter formatter = DateTimeFormatter
-                .ofPattern("yyyy.MM.dd HH:mm", Locale.ROOT);
+                .ofPattern("yyyy.MM.dd HH:mm:ss", Locale.ROOT);
 
         outputStream.writeInt(tasks.size());
 
@@ -35,9 +36,9 @@ public class TaskIO {
                 String time = (t.getTime().format(formatter));
                 outputStream.writeUTF(time);
             }
-            outputStream.flush();
-            outputStream.close();
         }
+        outputStream.flush();
+        outputStream.close();
     }
 
     public static void read(AbstractTaskList tasks, InputStream in) throws IOException {
@@ -53,7 +54,6 @@ public class TaskIO {
             String title = inputStream.readUTF();
 
             int activity = inputStream.readInt();
-            tasks.getTask(i).setActive(activity > 0);
             long repetitionInterval = inputStream.readLong();
             if (repetitionInterval > 0) {
                 String tmpStart = inputStream.readUTF();
@@ -62,11 +62,14 @@ public class TaskIO {
                 LocalDateTime endTime = LocalDateTime.parse(tmpEnd, formatter);
                 interval = Period.ofDays((int) repetitionInterval / 86400);
                 Task tmpTask = new Task(title, startTime, endTime, interval);
+                tmpTask.setActive(activity == 1);
                 tasks.add(tmpTask);
+
             } else {
                 String tmpTime = inputStream.readUTF();
                 LocalDateTime Time = LocalDateTime.parse(tmpTime, formatter);
                 Task tmpTask = new Task(title, Time);
+                tmpTask.setActive(activity == 1);
                 tasks.add(tmpTask);
             }
         }
@@ -89,14 +92,12 @@ public class TaskIO {
      */
     public static void write(AbstractTaskList tasks, Writer out) throws IOException {
         DateTimeFormatter formatter = DateTimeFormatter
-                .ofPattern("yyyy.MM.dd HH:mm", Locale.ROOT);
+                .ofPattern("yyyy.MM.dd HH:mm:ss", Locale.ROOT);
         JsonWriter writer = new JsonWriter(out);
 
         writer.beginObject();
-        writer.beginArray();
         writer.name("The number of tasks: ").value(tasks.size());
         for (Task t : tasks) {
-            writer.beginObject();
             writer.name("The length of name: ").value(t.getTitle().length());
             writer.name("Name: ").value(t.getTitle());
             writer.name("Activity: ").value(t.isActive() ? 1 : 0);
@@ -110,13 +111,9 @@ public class TaskIO {
                 String time = (t.getTime().format(formatter));
                 writer.name("Execution time: ").value(time);
             }
-            writer.endObject();
         }
-        writer.endArray();
         writer.endObject();
-
-
-
+        writer.close();
     }
 
     public static void read(AbstractTaskList tasks, Reader in) throws IOException {
@@ -135,11 +132,9 @@ public class TaskIO {
         LocalDateTime end = null;
         String timeStr;
         LocalDateTime time = null;
-        numberOfTasks = reader.nextInt();
         reader.beginObject();
-        reader.beginArray();
+
         while (reader.hasNext()) {
-            reader.beginObject();
             String name = reader.nextName();
             if (name.equals("The number of tasks: ")) numberOfTasks = reader.nextInt();
             if (name.equals("The length of name: ")) titleLength = reader.nextInt();
@@ -147,44 +142,50 @@ public class TaskIO {
             if (name.equals("Activity: ")) activity = reader.nextInt();
             if (name.equals("Repetition interval: ")) {
                 intervalLong = reader.nextLong();
-                interval=Period.ofDays((int) (intervalLong / 86400));
+                interval = Period.ofDays((int) (intervalLong / 86400));
             }
-            if(name.equals("Start time: ")) {
-                startStr=reader.nextString();
-                start=LocalDateTime.parse(startStr, formatter);
+            if (name.equals("Start time: ")) {
+                startStr = reader.nextString();
+                start = LocalDateTime.parse(startStr, formatter);
+
             }
-            if(name.equals("End time: ")){
-                endStr=reader.nextString();
-                end=LocalDateTime.parse(endStr, formatter);
-            }
-            if(name.equals("Execution time: ")){
-                timeStr=reader.nextString();
-                time=LocalDateTime.parse(timeStr, formatter);
-            }
-            if(interval!=null){
-                Task tmpTask = new Task(title,start,end,interval);
-                tmpTask.setActive(activity==1);
+            if (name.equals("End time: ")) {
+                endStr = reader.nextString();
+                end = LocalDateTime.parse(endStr, formatter);
+                Task tmpTask = new Task(title, start, end, interval);
+                tmpTask.setActive(activity == 1);
                 tasks.add(tmpTask);
+
             }
-            else{
+            if (name.equals("Execution time: ")) {
+                timeStr = reader.nextString();
+                time = LocalDateTime.parse(timeStr, formatter);
                 Task tmpTask = new Task(title, time);
-                tmpTask.setActive(activity==1);
+                tmpTask.setActive(activity == 1);
                 tasks.add(tmpTask);
+
             }
-            reader.endObject();
+
+/*            if (start!=null && end!=null ) {
+
+
+            }
+            if (time != null) {
+
+            }*/
+
         }
-        reader.endArray();
         reader.endObject();
     }
 
     //Method writes tasks to a file
-    public static void writeText(AbstractTaskList tasks, File file) throws IOException {
+    public static void writeText(AbstractTaskList tasks, File file) throws IOException, FileNotFoundException {
         FileWriter fileWriter = new FileWriter(file);
         write(tasks, fileWriter);
     }
 
     //Method reads tasks from a file
-    public static void readText(AbstractTaskList tasks, File file) throws IOException {
+    public static void readText(AbstractTaskList tasks, File file) throws IOException, FileNotFoundException {
         FileReader fileReader = new FileReader(file);
         read(tasks, fileReader);
     }
