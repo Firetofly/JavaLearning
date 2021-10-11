@@ -7,4 +7,7 @@ Communication diagram:
 
 Class diagram:
 
-![alt text](https://d.radikal.ru/d30/2110/64/00b1b2c434a3.png)
+![alt text](https://d.radikal.ru/d14/2110/9f/49f28e22aba2.png)
+
+<a target="_blank" href="https://radikal.ru"><img src="https://d.radikal.ru/d14/2110/9f/49f28e22aba2.png" /></a>
+
