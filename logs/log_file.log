@@ -1,0 +1,335 @@
+2021-10-11 18:47:11 INFO  ArrayTaskList:36 - Added task to ArrayList
+2021-10-11 18:48:30 INFO  ArrayTaskList:36 - Added task to ArrayList
+2021-10-11 19:07:17 INFO  ArrayTaskList:36 - Added task to ArrayList
+2021-10-11 19:41:24 INFO  ArrayTaskList:36 - A tasktesttasik1! has been added to ArrayList
+2021-10-11 19:41:24 INFO  ArrayTaskList:57 - A task testtasik1!has been removed.
+2021-10-11 21:50:29 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 21:50:33 ERROR Emulator:210 - Exception in main met
+com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1568)
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1409)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:593)
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:379)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.read(TaskIO.java:144)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.readText(TaskIO.java:199)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.startApplication(Emulator.java:26)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Main.main(Main.java:208)
+2021-10-11 21:51:14 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 21:51:17 ERROR Emulator:210 - Exception in main met
+com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1568)
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1409)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:593)
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:379)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.read(TaskIO.java:144)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.readText(TaskIO.java:199)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.startApplication(Emulator.java:26)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Main.main(Main.java:208)
+2021-10-11 21:52:31 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 21:52:34 ERROR Emulator:210 - Exception in main met
+com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1568)
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1409)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:593)
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:379)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.read(TaskIO.java:144)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.readText(TaskIO.java:199)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.startApplication(Emulator.java:26)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Main.main(Main.java:208)
+2021-10-11 21:53:26 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 21:53:29 ERROR Emulator:210 - Exception in main met
+com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1568)
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1409)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:593)
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:379)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.read(TaskIO.java:144)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.readText(TaskIO.java:199)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.startApplication(Emulator.java:26)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Main.main(Main.java:208)
+2021-10-11 21:53:33 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 21:53:39 ERROR Emulator:210 - Exception in main met
+com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1568)
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1409)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:593)
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:379)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.read(TaskIO.java:144)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.readText(TaskIO.java:199)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.startApplication(Emulator.java:26)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Main.main(Main.java:208)
+2021-10-11 21:58:13 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 21:58:14 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 21:58:18 ERROR Emulator:210 - Exception in main met
+java.io.EOFException: End of input at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.nextNonWhitespace(JsonReader.java:1401)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:549)
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:379)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.read(TaskIO.java:144)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.readText(TaskIO.java:199)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.startApplication(Emulator.java:26)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Main.main(Main.java:208)
+2021-10-11 21:58:36 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 21:58:39 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 21:58:50 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 21:58:52 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 21:59:03 INFO  Emulator:72 - User: fomin views a Task List
+2021-10-11 21:59:03 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:02:24 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 22:02:27 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:02:30 INFO  Emulator:73 - User: fomin views a Task List
+2021-10-11 22:02:30 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:02:38 INFO  Emulator:51 - User: fomin adds a new Task
+2021-10-11 22:02:38 INFO  Emulator:262 - User: fomin starts metaddNewTask()
+2021-10-11 22:03:16 INFO  Emulator:283 - User: fomin starts metaddParamsInNewTask()
+2021-10-11 22:03:16 INFO  Emulator:307 - User: fomin starts metsetTitleInTask()
+2021-10-11 22:03:33 INFO  Emulator:321 - User: fomin starts metsetTimesInTask()
+2021-10-11 22:06:43 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 22:06:45 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:06:48 INFO  Emulator:73 - User: fomin views a Task List
+2021-10-11 22:06:48 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:06:50 INFO  Emulator:51 - User: fomin adds a new Task
+2021-10-11 22:06:50 INFO  Emulator:262 - User: fomin starts metaddNewTask()
+2021-10-11 22:06:53 INFO  Emulator:283 - User: fomin starts metaddParamsInNewTask()
+2021-10-11 22:06:53 INFO  Emulator:307 - User: fomin starts metsetTitleInTask()
+2021-10-11 22:06:57 INFO  Emulator:321 - User: fomin starts metsetTimesInTask()
+2021-10-11 22:06:59 INFO  Emulator:344 - User: fomin starts metsetTimesNonRepeatableTask()
+2021-10-11 22:07:31 ERROR Emulator:354 - Exception in met setTimesNonRepeatableTask()
+java.time.format.DateTimeParseException: Text '"2021-02-23 15:00"' could not be parsed at index 0
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2052)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	at java.base/java.time.LocalDateTime.parse(LocalDateTime.java:494)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.setTimesNonRepeatableTask(Emulator.java:352)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.setTimesInTask(Emulator.java:328)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.addParamsInNewTask(Emulator.java:289)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.addNewTask(Emulator.java:269)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.todoMenu(Emulator.java:52)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.todoMenu(Emulator.java:76)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.startApplication(Emulator.java:30)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Main.main(Main.java:208)
+2021-10-11 22:07:31 INFO  Emulator:344 - User: fomin starts metsetTimesNonRepeatableTask()
+2021-10-11 22:07:41 INFO  Emulator:436 - User: fomin starts metsetActivityInTask()
+2021-10-11 22:07:45 INFO  ArrayTaskList:36 - A task test0 has been added to ArrayList
+2021-10-11 22:07:45 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:07:47 INFO  Emulator:73 - User: fomin views a Task List
+2021-10-11 22:07:47 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:10:49 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 22:10:51 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:10:52 INFO  Emulator:73 - User: fomin views a Task List
+2021-10-11 22:10:52 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:12:28 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 22:12:32 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:12:35 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:12:36 INFO  Emulator:51 - User: fomin adds a new Task
+2021-10-11 22:12:36 INFO  Emulator:262 - User: fomin starts metaddNewTask()
+2021-10-11 22:12:38 INFO  Emulator:283 - User: fomin starts metaddParamsInNewTask()
+2021-10-11 22:12:38 INFO  Emulator:307 - User: fomin starts metsetTitleInTask()
+2021-10-11 22:12:41 INFO  Emulator:321 - User: fomin starts metsetTimesInTask()
+2021-10-11 22:12:43 INFO  Emulator:344 - User: fomin starts metsetTimesNonRepeatableTask()
+2021-10-11 22:14:04 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 22:14:07 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:14:09 INFO  Emulator:51 - User: fomin adds a new Task
+2021-10-11 22:14:09 INFO  Emulator:262 - User: fomin starts metaddNewTask()
+2021-10-11 22:14:10 INFO  Emulator:283 - User: fomin starts metaddParamsInNewTask()
+2021-10-11 22:14:10 INFO  Emulator:307 - User: fomin starts metsetTitleInTask()
+2021-10-11 22:14:24 INFO  Emulator:321 - User: fomin starts metsetTimesInTask()
+2021-10-11 22:14:25 INFO  Emulator:344 - User: fomin starts metsetTimesNonRepeatableTask()
+2021-10-11 22:14:42 INFO  Emulator:436 - User: fomin starts metsetActivityInTask()
+2021-10-11 22:14:48 INFO  ArrayTaskList:36 - A task test has been added to ArrayList
+2021-10-11 22:14:48 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:14:51 INFO  Emulator:73 - User: fomin views a Task List
+2021-10-11 22:14:51 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:16:53 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 22:16:55 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:16:57 INFO  Emulator:73 - User: fomin views a Task List
+2021-10-11 22:16:57 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:16:59 INFO  Emulator:51 - User: fomin adds a new Task
+2021-10-11 22:16:59 INFO  Emulator:262 - User: fomin starts metaddNewTask()
+2021-10-11 22:17:00 INFO  Emulator:283 - User: fomin starts metaddParamsInNewTask()
+2021-10-11 22:17:00 INFO  Emulator:307 - User: fomin starts metsetTitleInTask()
+2021-10-11 22:17:03 INFO  Emulator:321 - User: fomin starts metsetTimesInTask()
+2021-10-11 22:17:05 INFO  Emulator:344 - User: fomin starts metsetTimesNonRepeatableTask()
+2021-10-11 22:17:21 ERROR Emulator:354 - Exception in met setTimesNonRepeatableTask()
+java.time.format.DateTimeParseException: Text '2021-22-21 12:12:12' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 22
+	at java.base/java.time.format.DateTimeFormatter.createError(DateTimeFormatter.java:2023)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1958)
+	at java.base/java.time.LocalDateTime.parse(LocalDateTime.java:494)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.setTimesNonRepeatableTask(Emulator.java:352)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.setTimesInTask(Emulator.java:328)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.addParamsInNewTask(Emulator.java:289)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.addNewTask(Emulator.java:269)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.todoMenu(Emulator.java:52)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.todoMenu(Emulator.java:76)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.startApplication(Emulator.java:30)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Main.main(Main.java:208)
+Caused by: java.time.DateTimeException: Invalid value for MonthOfYear (valid values 1 - 12): 22
+	at java.base/java.time.temporal.ValueRange.checkValidIntValue(ValueRange.java:338)
+	at java.base/java.time.temporal.ChronoField.checkValidIntValue(ChronoField.java:737)
+	at java.base/java.time.chrono.IsoChronology.resolveYMD(IsoChronology.java:644)
+	at java.base/java.time.chrono.IsoChronology.resolveYMD(IsoChronology.java:126)
+	at java.base/java.time.chrono.AbstractChronology.resolveDate(AbstractChronology.java:442)
+	at java.base/java.time.chrono.IsoChronology.resolveDate(IsoChronology.java:586)
+	at java.base/java.time.chrono.IsoChronology.resolveDate(IsoChronology.java:126)
+	at java.base/java.time.format.Parsed.resolveDateFields(Parsed.java:367)
+	at java.base/java.time.format.Parsed.resolveFields(Parsed.java:272)
+	at java.base/java.time.format.Parsed.resolve(Parsed.java:259)
+	at java.base/java.time.format.DateTimeParseContext.toResolved(DateTimeParseContext.java:331)
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2058)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	... 9 more
+2021-10-11 22:17:21 INFO  Emulator:344 - User: fomin starts metsetTimesNonRepeatableTask()
+2021-10-11 22:17:30 INFO  Emulator:436 - User: fomin starts metsetActivityInTask()
+2021-10-11 22:17:32 INFO  ArrayTaskList:36 - A task test has been added to ArrayList
+2021-10-11 22:17:32 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:17:33 INFO  Emulator:73 - User: fomin views a Task List
+2021-10-11 22:17:33 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:20:03 INFO  Emulator:56 - User: fomin changes params in existing Task
+2021-10-11 22:20:03 INFO  Emulator:138 - User: fomin starts metchangeParamInTasK()
+2021-10-11 22:20:07 INFO  Emulator:161 - User: fomin starts metchangeParamInTasKIndex()
+2021-10-11 22:25:19 INFO  Emulator:307 - User: fomin starts metsetTitleInTask()
+2021-10-11 22:25:21 INFO  Emulator:161 - User: fomin starts metchangeParamInTasKIndex()
+2021-10-11 22:25:27 INFO  Emulator:436 - User: fomin starts metsetActivityInTask()
+2021-10-11 22:25:29 INFO  Emulator:161 - User: fomin starts metchangeParamInTasKIndex()
+2021-10-11 22:25:31 INFO  Emulator:321 - User: fomin starts metsetTimesInTask()
+2021-10-11 22:25:35 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:25:38 INFO  Emulator:73 - User: fomin views a Task List
+2021-10-11 22:25:38 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:25:56 INFO  Emulator:68 - User: fomin views a calendar of Tasks
+2021-10-11 22:31:20 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 22:31:20 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 22:33:53 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 22:33:53 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 22:33:53 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 22:33:59 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:34:04 INFO  Emulator:73 - User: fomin views a Task List
+2021-10-11 22:34:04 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:34:06 INFO  Emulator:51 - User: fomin adds a new Task
+2021-10-11 22:34:06 INFO  Emulator:270 - User: fomin starts metaddNewTask()
+2021-10-11 22:34:07 INFO  Emulator:289 - User: fomin starts metaddParamsInNewTask()
+2021-10-11 22:34:07 INFO  Emulator:313 - User: fomin starts metsetTitleInTask()
+2021-10-11 22:34:09 INFO  Emulator:327 - User: fomin starts metsetTimesInTask()
+2021-10-11 22:34:11 INFO  Emulator:344 - User: fomin starts metsetTimesNonRepeatableTask()
+2021-10-11 22:34:25 INFO  Emulator:436 - User: fomin starts metsetActivityInTask()
+2021-10-11 22:34:26 INFO  ArrayTaskList:36 - A task test has been added to ArrayList
+2021-10-11 22:34:26 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:34:29 INFO  Emulator:68 - User: fomin views a calendar of Tasks
+2021-10-11 22:45:06 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 22:45:06 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 22:45:06 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 22:45:08 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:45:09 INFO  Emulator:51 - User: fomin adds a new Task
+2021-10-11 22:45:09 INFO  Emulator:270 - User: fomin starts metaddNewTask()
+2021-10-11 22:45:11 INFO  Emulator:289 - User: fomin starts metaddParamsInNewTask()
+2021-10-11 22:45:11 INFO  Emulator:313 - User: fomin starts metsetTitleInTask()
+2021-10-11 22:45:14 INFO  Emulator:327 - User: fomin starts metsetTimesInTask()
+2021-10-11 22:45:15 INFO  Emulator:344 - User: fomin starts metsetTimesNonRepeatableTask()
+2021-10-11 22:45:25 INFO  Emulator:436 - User: fomin starts metsetActivityInTask()
+2021-10-11 22:45:26 INFO  ArrayTaskList:36 - A task 123 has been added to ArrayList
+2021-10-11 22:45:26 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:45:29 INFO  Emulator:68 - User: fomin views a calendar of Tasks
+2021-10-11 22:45:51 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:47:05 INFO  Emulator:80 - User: fomin saves Data
+2021-10-11 22:47:05 INFO  Emulator:259 - User: fomin starts metsaveAndExit()
+2021-10-11 22:47:05 INFO  Emulator:262 - User: fomin logged out of the application
+2021-10-11 22:47:16 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 22:47:16 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 22:47:16 INFO  Emulator:24 - User: fomin logged into the application & saves data
+2021-10-11 22:47:18 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:47:20 INFO  Emulator:51 - User: fomin adds a new Task
+2021-10-11 22:47:20 INFO  Emulator:270 - User: fomin starts metaddNewTask()
+2021-10-11 22:47:22 INFO  Emulator:289 - User: fomin starts metaddParamsInNewTask()
+2021-10-11 22:47:22 INFO  Emulator:313 - User: fomin starts metsetTitleInTask()
+2021-10-11 22:47:25 INFO  Emulator:327 - User: fomin starts metsetTimesInTask()
+2021-10-11 22:47:28 INFO  Emulator:361 - User: fomin starts metsetTimesRepeatableTask()
+2021-10-11 22:47:28 INFO  Emulator:374 - User: fomin starts metsetStartRepeatable()
+2021-10-11 22:47:46 INFO  Emulator:391 - User: fomin starts metsetEndRepeatable()
+2021-10-11 22:47:59 ERROR Emulator:405 - Exception in met setEndRepeatable()
+java.time.format.DateTimeParseException: Text '2021-11-00 12:30:00' could not be parsed: Invalid value for DayOfMonth (valid values 1 - 28/31): 0
+	at java.base/java.time.format.DateTimeFormatter.createError(DateTimeFormatter.java:2023)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1958)
+	at java.base/java.time.LocalDateTime.parse(LocalDateTime.java:494)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.setEndRepeatable(Emulator.java:399)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.setTimesRepeatableTask(Emulator.java:366)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.setTimesInTask(Emulator.java:334)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.addParamsInNewTask(Emulator.java:295)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.addNewTask(Emulator.java:277)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.todoMenu(Emulator.java:52)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.startApplication(Emulator.java:30)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Main.main(Main.java:208)
+Caused by: java.time.DateTimeException: Invalid value for DayOfMonth (valid values 1 - 28/31): 0
+	at java.base/java.time.temporal.ValueRange.checkValidIntValue(ValueRange.java:338)
+	at java.base/java.time.temporal.ChronoField.checkValidIntValue(ChronoField.java:737)
+	at java.base/java.time.chrono.IsoChronology.resolveYMD(IsoChronology.java:645)
+	at java.base/java.time.chrono.IsoChronology.resolveYMD(IsoChronology.java:126)
+	at java.base/java.time.chrono.AbstractChronology.resolveDate(AbstractChronology.java:442)
+	at java.base/java.time.chrono.IsoChronology.resolveDate(IsoChronology.java:586)
+	at java.base/java.time.chrono.IsoChronology.resolveDate(IsoChronology.java:126)
+	at java.base/java.time.format.Parsed.resolveDateFields(Parsed.java:367)
+	at java.base/java.time.format.Parsed.resolveFields(Parsed.java:272)
+	at java.base/java.time.format.Parsed.resolve(Parsed.java:259)
+	at java.base/java.time.format.DateTimeParseContext.toResolved(DateTimeParseContext.java:331)
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2058)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	... 9 more
+2021-10-11 22:47:59 INFO  Emulator:391 - User: fomin starts metsetEndRepeatable()
+2021-10-11 22:48:21 INFO  Emulator:413 - User: fomin starts metsetIntervalRepeatable()
+2021-10-11 22:48:34 ERROR Emulator:427 - Exception in met setIntervalRepeatable() 
+java.lang.Exception
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.setIntervalRepeatable(Emulator.java:423)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.setTimesRepeatableTask(Emulator.java:370)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.setTimesInTask(Emulator.java:334)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.addParamsInNewTask(Emulator.java:295)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.addNewTask(Emulator.java:277)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.todoMenu(Emulator.java:52)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.startApplication(Emulator.java:30)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Main.main(Main.java:208)
+2021-10-11 22:48:34 INFO  Emulator:413 - User: fomin starts metsetIntervalRepeatable()
+2021-10-11 22:49:14 INFO  Emulator:436 - User: fomin starts metsetActivityInTask()
+2021-10-11 22:49:18 INFO  ArrayTaskList:36 - A task test has been added to ArrayList
+2021-10-11 22:49:18 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:49:22 INFO  Emulator:73 - User: fomin views a Task List
+2021-10-11 22:49:22 INFO  Emulator:38 - User: fomin opens main Menu
+2021-10-11 22:49:28 INFO  Emulator:62 - User: fomin deletes Task
+2021-10-11 22:49:28 INFO  Emulator:200 - User: fomin starts metdeleteTaskOrClearList()
+2021-10-11 22:52:19 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 22:52:19 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 22:52:19 INFO  Emulator:25 - User: fomin logged into the application & saves data
+2021-10-11 22:52:20 INFO  Emulator:40 - User: fomin opens main Menu
+2021-10-11 22:52:22 INFO  Emulator:53 - User: fomin adds a new Task
+2021-10-11 22:52:22 INFO  Emulator:272 - User: fomin starts metaddNewTask()
+2021-10-11 22:52:24 INFO  Emulator:291 - User: fomin starts metaddParamsInNewTask()
+2021-10-11 22:52:24 INFO  Emulator:315 - User: fomin starts metsetTitleInTask()
+2021-10-11 22:52:26 INFO  Emulator:329 - User: fomin starts metsetTimesInTask()
+2021-10-11 22:52:28 INFO  Emulator:346 - User: fomin starts metsetTimesNonRepeatableTask()
+2021-10-11 22:52:42 INFO  Emulator:438 - User: fomin starts metsetActivityInTask()
+2021-10-11 22:52:44 INFO  ArrayTaskList:36 - A task test has been added to ArrayList
+2021-10-11 22:52:44 INFO  Emulator:40 - User: fomin opens main Menu
+2021-10-11 23:03:21 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 23:03:21 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 23:03:21 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 23:03:21 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 23:04:03 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 23:04:03 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 23:04:03 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 23:04:03 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 23:05:01 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 23:05:01 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 23:05:01 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 23:05:01 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 23:05:56 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 23:05:56 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 23:05:56 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 23:05:56 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 23:05:56 INFO  ArrayTaskList:36 - A task testtasik1! has been added to ArrayList
+2021-10-11 23:05:56 INFO  ArrayTaskList:36 - A task testtasik2! has been added to ArrayList
+2021-10-11 23:07:12 INFO  Emulator:25 - User: fomin logged into the application & saves data
+2021-10-11 23:07:14 ERROR Emulator:207 - Exception in main met
+com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1568)
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1409)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:593)
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:379)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.read(TaskIO.java:140)
+	at ua.eu.sumdu.j2se.Fomin.tasks.TaskIO.readText(TaskIO.java:188)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Emulator.startApplication(Emulator.java:29)
+	at ua.eu.sumdu.j2se.Fomin.tasks.Main.main(Main.java:205)

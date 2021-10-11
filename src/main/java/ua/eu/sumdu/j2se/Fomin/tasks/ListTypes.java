@@ -1,6 +1,6 @@
 package ua.eu.sumdu.j2se.Fomin.tasks;
 
-enum ListTypes {
+public enum ListTypes {
     ARRAY,
     LINKED
 }

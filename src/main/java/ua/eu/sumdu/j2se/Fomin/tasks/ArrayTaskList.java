@@ -1,6 +1,8 @@
 package ua.eu.sumdu.j2se.Fomin.tasks;
 
 
+import org.apache.log4j.Logger;
+
 import java.util.Iterator;
 
 public class ArrayTaskList extends AbstractTaskList {
@@ -8,6 +10,7 @@ public class ArrayTaskList extends AbstractTaskList {
     private int index;
 
     private static final int DEFAULT_CAPACITY = 10;
+    private static final Logger log = Logger.getLogger(ArrayTaskList.class);
 
     public ArrayTaskList() {
         tasks = new Task[DEFAULT_CAPACITY];
@@ -29,9 +32,13 @@ public class ArrayTaskList extends AbstractTaskList {
             tasks[index] = task;
             index++;
             increaseSize();
+            events.notify(task, "add", size());
+            log.info("A task " + task.getTitle() + " has been added to ArrayList");
 
-        } else
+        } else {
+            log.error("Exception! Were set incorrect parameters of method 'add' for ArrayTaskList");
             throw new IllegalArgumentException("Parameters of this method should not be NULL.");
+        }
     }
 
     protected void increaseCapacity() {
@@ -47,9 +54,11 @@ public class ArrayTaskList extends AbstractTaskList {
             System.arraycopy(tasks, taskIndex + 1, tasks, taskIndex, index - taskIndex);
             decreaseSize();
             this.index--;
+            log.info("A task "+task.getTitle() + "has been removed.");
             return true;
         } else
-            throw new IllegalArgumentException("Parameters of this method should not be NULL.");
+            log.error("Exception! Was entered a non-existent task.");
+        throw new IllegalArgumentException("Parameters of this method should not be NULL.");
     }
 
     //If array does not contain an element, the method return -1
@@ -70,18 +79,23 @@ public class ArrayTaskList extends AbstractTaskList {
     @Override
     public Task getTask(int index) throws IndexOutOfBoundsException {
         if (index >= 0 && index <= this.index) {
+            //log.info("Task "+ tasks[index] +" on "+ index);
             return tasks[index];
+
         } else
-            throw new IndexOutOfBoundsException("Index out of range.");
+            log.error("Exception! Trying return Task by index out of range!");
+        throw new IndexOutOfBoundsException("Index out of range.");
 
     }
+
     @Override
-    public Iterator<Task> iterator(){
+    public Iterator<Task> iterator() {
         return new Iterator<Task>() {
-            int counter=0;
+            int counter = 0;
+
             @Override
             public boolean hasNext() {
-                return !(counter==size());
+                return !(counter == size());
             }
 
             @Override
@@ -90,7 +104,7 @@ public class ArrayTaskList extends AbstractTaskList {
             }
 
             @Override
-            public void remove(){
+            public void remove() {
                 ArrayTaskList.this.remove(getTask(counter));
             }
         };

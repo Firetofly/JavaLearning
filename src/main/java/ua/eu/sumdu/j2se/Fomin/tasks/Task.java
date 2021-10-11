@@ -138,44 +138,6 @@ public class Task implements Cloneable, Serializable {
         }
         return count;
     }
-    /*public LocalDateTime nextTimeAfter(LocalDateTime current) throws NullPointerException {
-        if (isActive()) {
-
-            if (current != null) {
-                //for non repeatable task:
-                if (!isRepeated()) {
-                    if (time.isBefore(current) || time.isEqual(current)) {
-                        return null;
-                    } else {
-                        return time;
-                    }
-                }
-                //for  repeatable task:
-                if (current.isAfter(end) || current.isEqual(end)) {
-                    return null;
-                }
-                if (current.isBefore(start)) {
-                    return start;
-                }
-                LocalDateTime count = start;
-                LocalDateTime lastIteration = start;
-                while (lastIteration.isBefore(end) || lastIteration.isEqual(end)) {
-                    lastIteration = lastIteration.plus(getRepeatInterval());
-                }
-                lastIteration = lastIteration.minus(interval);
-                //calculation last Iteration with current
-                while (count.isBefore(current) || count.isEqual(current)) {
-                    count = count.plus(getRepeatInterval());
-                }
-                if (current.isEqual(lastIteration) || current.isAfter(lastIteration) || count.isAfter(lastIteration)) {
-                    return null;
-                }
-                return count;
-            } else
-                throw new NullPointerException("'Current' should not be a null.");
-        } else
-            return null;
-    }*/
 
 
     @Override
@@ -220,23 +182,6 @@ public class Task implements Cloneable, Serializable {
 
 }
 
-    /*{
-                //For repetitive tasks
-                if (isRepeated()) {
-                    if (current.(start) && (current <= (end - start) / interval * interval + start)) {
-                        if ((current) - start) / interval == 0)
-                            //Then is (current-interval)/interval=1
-                            return start + interval;
-                            //If current is between first and second intervals;
-                        else if (current > ((current - start) / interval * interval + start) && (current < ((current - start) / interval * interval + start + interval)))
-                            return ((current - start) / interval) * interval + start + interval;
-                        else
-                            return ((current - start) / interval) * interval + start;
-                    } else return current <= start ? start : null;
-                }
-                //For non-repetitive tasks
-                else return current <= time ? time : null;
-            }*/
 
 
 

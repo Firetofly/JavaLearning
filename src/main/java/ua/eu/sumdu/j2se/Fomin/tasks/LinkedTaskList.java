@@ -1,11 +1,15 @@
 package ua.eu.sumdu.j2se.Fomin.tasks;
 
+import org.apache.log4j.Logger;
+
 import java.util.Iterator;
 
 public class LinkedTaskList extends AbstractTaskList {
 
     transient Node first;
     transient Node last;
+
+    private static final Logger log = Logger.getLogger(LinkedTaskList.class);
 
     private static class Node {
         Task item;
@@ -30,6 +34,7 @@ public class LinkedTaskList extends AbstractTaskList {
             else
                 l.next = newNode;
             increaseSize();
+            log.info("A task "+task.getTitle()+" has been to LinkedTaskList");
         } else {
             throw new IllegalArgumentException("Parameters of this method should not be NULL");
         }
@@ -42,6 +47,7 @@ public class LinkedTaskList extends AbstractTaskList {
                 for (Node x = first; x != null; x = x.next) {
                     if (x.item == null) {
                         unlink(x);
+                        log.info("A task "+task.getTitle()+" has been removed.");
                         return true;
                     }
                 }
@@ -49,12 +55,14 @@ public class LinkedTaskList extends AbstractTaskList {
                 for (Node x = first; x != null; x = x.next) {
                     if (task.equals(x.item)) {
                         unlink(x);
+                        log.info("A task "+task.getTitle()+" has been removed.");
                         return true;
                     }
                 }
             }
             return false;
         } else {
+            log.error("Exception! Was entered a non-existent task!");
             throw new IllegalArgumentException("Parameters of this method should not be null");
         }
     }
@@ -88,8 +96,10 @@ public class LinkedTaskList extends AbstractTaskList {
     public Task getTask(int index) throws IndexOutOfBoundsException {
         if (index >= 0 && index <= size()) {
             return node(index).item;
-        } else
+        } else{
+            log.error("Exception! Trying return a Task by index out of range!");
             throw new IndexOutOfBoundsException("Index out of range.");
+        }
     }
 
     @Override

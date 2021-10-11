@@ -1,6 +1,5 @@
 package ua.eu.sumdu.j2se.Fomin.tasks;
 
-import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
@@ -96,8 +95,11 @@ public class TaskIO {
         JsonWriter writer = new JsonWriter(out);
 
         writer.beginObject();
+
         writer.name("The number of tasks: ").value(tasks.size());
+
         for (Task t : tasks) {
+
             writer.name("The length of name: ").value(t.getTitle().length());
             writer.name("Name: ").value(t.getTitle());
             writer.name("Activity: ").value(t.isActive() ? 1 : 0);
@@ -112,6 +114,7 @@ public class TaskIO {
                 writer.name("Execution time: ").value(time);
             }
         }
+
         writer.endObject();
         writer.close();
     }
@@ -132,9 +135,11 @@ public class TaskIO {
         LocalDateTime end = null;
         String timeStr;
         LocalDateTime time = null;
-        reader.beginObject();
 
+
+        reader.beginObject();
         while (reader.hasNext()) {
+
             String name = reader.nextName();
             if (name.equals("The number of tasks: ")) numberOfTasks = reader.nextInt();
             if (name.equals("The length of name: ")) titleLength = reader.nextInt();
@@ -166,16 +171,9 @@ public class TaskIO {
 
             }
 
-/*            if (start!=null && end!=null ) {
-
-
-            }
-            if (time != null) {
-
-            }*/
-
         }
         reader.endObject();
+
     }
 
     //Method writes tasks to a file

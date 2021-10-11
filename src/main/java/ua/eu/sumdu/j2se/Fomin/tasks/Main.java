@@ -1,11 +1,6 @@
 package ua.eu.sumdu.j2se.Fomin.tasks;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.Period;
 
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException, InterruptedException, IOException {
@@ -149,18 +144,22 @@ public class Main {
 
         //Test's for RepTasks at Work7:
 
-        AbstractTaskList taskList = TaskListFactory.createTaskLIst(ListTypes.ARRAY);
+        //AbstractTaskList taskList = TaskListFactory.createTaskLIst(ListTypes.ARRAY);
 
-        Task repetableTask1 = new Task("testtasik1!", LocalDateTime.of(2021, Month.AUGUST, 3,
+        /*Task repetableTask1 = new Task("testtasik1!", LocalDateTime
+                .of(2021, Month.AUGUST, 3,
                 14, 15), LocalDateTime.of(2021, Month.AUGUST, 29, 14, 15,56),
                 Period.ofDays(5));
 
-        Task repetableTask2 = new Task("testtasik2!", LocalDateTime.of(2021, Month.AUGUST, 3,
+        Task repetableTask2 = new Task("testtasik2!", LocalDateTime
+                .of(2021, Month.AUGUST, 3,
                 14, 15), LocalDateTime.of(2021, Month.AUGUST, 29, 14, 15,56),
                 Period.ofDays(5));
+        Task nonrepetableTask1 = new Task("titleNon", LocalDateTime
+                .of(2022, Month.AUGUST, 1, 14, 15));
 
         taskList.add(repetableTask1);
-        taskList.add(repetableTask2);
+        taskList.add(repetableTask2);*/
 
         /*DateTimeFormatter formatter = DateTimeFormatter
                 .ofPattern("yyyy.MM.dd HH:mm:ss", Locale.ROOT);
@@ -168,13 +167,13 @@ public class Main {
         System.out.println(taskList.getTask(0).getStartTime().format(formatter).toString());*/
        // System.out.println(taskList.getTask(0).getRepeatInterval().toString());
 
-/*        TreeMap<LocalDateTime, Set<Task>> sortedMap = (TreeMap) Tasks
+       /*TreeMap<LocalDateTime, Set<Task>> sortedMap = (TreeMap) Tasks
                 .calendar(taskList, LocalDateTime.now().minusMonths(3), LocalDateTime.now());
 
         for (Map.Entry<LocalDateTime, Set<Task>> entry : sortedMap.entrySet()) {
             System.out.println("\nKEY: " + entry.getKey() + ". \nVALUE: " + entry.getValue());
         }*/
-        try {
+ /*      try {
             File testJsonFile = new File("C:\\testjava\\testJson.txt");
             File testFile=new File("C:\\testjava\\test.txt");
             TaskIO.writeBinary(taskList, testFile);
@@ -194,5 +193,23 @@ public class Main {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
+*/
+/*        taskList.events.subscribe("add",new ConsoleNotificationListener("User_Name"));
+        taskList.events.subscribe("remove",new ConsoleNotificationListener("User_Name"));
+
+        taskList.add(repetableTask1);
+        taskList.remove(repetableTask1);*/
+       Emulator emulator = new Emulator();
+
+        try {
+            emulator.startApplication();
+        } catch (IOException e) {
+            emulator.logger.error("Exception in main met", e);
+        }
+
+
+
+
+
     }
 }
