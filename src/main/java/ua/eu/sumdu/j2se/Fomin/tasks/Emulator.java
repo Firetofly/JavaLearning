@@ -48,8 +48,7 @@ public class Emulator {
         System.out.print("\n3 - Delete existing Task");
         System.out.print("\n4 - View the calendar of events scheduled for a certain period of time");
         System.out.print("\n5 - View the Task List");
-        System.out.print("\n6 - Read from JSON");
-        System.out.print("\n7 - Read from Binary");
+        System.out.print("\n6 - Read from file");
         System.out.print("\n0 - Save & Exit");
         System.out.println();
 
@@ -84,16 +83,27 @@ public class Emulator {
                 todoMenu();
             }
             case ("6") -> {
-                //read from JSON
-                TaskIO.readText(taskList, fileJson);
-                logger.info("User: " + System.getProperty("user.name") + " tasks has been read from JSON");
-                todoMenu();
-            }
-            case ("7") -> {
-                //read from Binary
-                TaskIO.readBinary(taskList, file);
-                logger.info("User: " + System.getProperty("user.name") + " tasks has been read from Binary");
-                todoMenu();
+                //read from files
+                System.out.println("Choose type of action: \n1-Binary\n2-JSON\3Back");
+                switch (scanner.nextLine()){
+                    case("1")->{
+                        //read from Binary
+                        TaskIO.readBinary(taskList, file);
+                        logger.info("User: " + System.getProperty("user.name") + " tasks has been read from Binary");
+                        todoMenu();
+                    }
+                    case("2")->{
+                        //read from JSON
+                        TaskIO.readText(taskList, fileJson);
+                        logger.info("User: " + System.getProperty("user.name") + " tasks has been read from JSON");
+                        todoMenu();
+                    }
+                    case("3")->{
+                        //back
+                        todoMenu();
+                    }
+                }
+
             }
             case ("0") -> {
                 //Save & Exit
